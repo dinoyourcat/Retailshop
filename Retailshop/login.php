@@ -1,3 +1,30 @@
+<?php
+session_start();
+include 'connect.php';
+
+// รับค่า username และ password จากฟอร์ม
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $username = $_POST['username'];
+  $password = $_POST['password'];
+
+  // ตรวจสอบข้อมูลผู้ใช้ในฐานข้อมูล
+  $sql = "SELECT * FROM employee WHERE User_name = '$username' AND Pass_word = '$password'";
+  $result = $conn->query($sql);
+  if ($result->num_rows == 1) {
+      // ข้อมูลถูกต้อง สามารถเข้าสู่ระบบได้
+      $_SESSION['username'] = $username;
+      header("Location: home.php"); // เปลี่ยนเส้นทางไปยังหน้า dashboard หรือหน้าที่คุณต้องการ
+  } else {
+      // ข้อมูลไม่ถูกต้อง
+      $error = "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง";
+  }
+}
+
+$conn->close();
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 

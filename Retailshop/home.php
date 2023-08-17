@@ -40,13 +40,13 @@
                       <a href="province.php">จัดการข้อมูลจังหวัด</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="#">จัดการข้อมูลพนักงาน</a>
+                      <a href="employee.php">จัดการข้อมูลพนักงาน</a>
                     </li>
                     <li class="dropdown-link">
                       <a href="#">จัดการข้อมูลตัวแทนจำหน่าย</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="#">จัดการข้อมูลลูกค้า</a>
+                      <a href="customer.php">จัดการข้อมูลลูกค้า</a>
                     </li>
                     <li class="dropdown-link">
                       <a href="#">จัดการข้อมูลสินค้า</a>
@@ -84,7 +84,7 @@
           </div>
 
           <div class="log-out" style="--i: 1.8s">
-            <a href="#" class="btn transparent">ออกจากระบบ</a>
+            <a href="login.php" class="btn transparent">ออกจากระบบ</a>
           </div>
         </div>
 

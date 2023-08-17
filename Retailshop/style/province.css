@@ -7,17 +7,17 @@
   font-family: 'K2D', sans-serif;
 }
 
-section{
+/* section{
 
   min-height: 100vh;
   background: linear-gradient(to bottom,#FBF1FF,#F8E6FF);
 
 }
-section .color{
+.color{
   position: absolute;
   filter: blur(200px);
 }
-section .color:nth-child(1){
+.color1:nth-child(1){
   top: -300px;
   right: 1px;
   width: 600px;
@@ -26,7 +26,7 @@ section .color:nth-child(1){
   background: #8cc0dea9;
 
 }
-section .color:nth-child(2){
+.color2:nth-child(2){
   top: 5px;
   left: 100px;
   width: 500px;
@@ -34,14 +34,14 @@ section .color:nth-child(2){
   border-radius: 300px;
   background: #cee6f385;
 }
-section .color:nth-child(3){
+.color3:nth-child(3){
   bottom: 50px;
   right: 600px;
   width: 300px;
   height: 300px;
   border-radius: 194px;
   background: #8fbdd3a8;
-}
+}  */
 
 ul{
     list-style: none;
@@ -58,6 +58,12 @@ header{
     width: 100%;
     z-index: 1000;
 }
+.container-table{
+    margin-top: 60px;
+    margin-left: 60px;
+    margin-right: 60px;
+    text-align: center;
+}
 
 .container{
     max-width: 65rem;
@@ -66,7 +72,19 @@ header{
     display: flex;
     position: relative;
 }
-
+.d-flex{
+    text-align: start;
+    margin-left: 900px;
+    max-width: 500px;
+    margin-bottom: 20px;
+    margin-top: 30px;
+    /* margin-left: 1280px; */
+}
+.form.add{
+    max-width: 1000px;
+    margin-left: 500px;
+    margin-top: 20px;
+}
 .logo-container{
     flex: 1;
     display: flex;
@@ -96,13 +114,10 @@ header{
     letter-spacing: 2px;
     text-transform: uppercase;
     line-height: 3rem;
-    justify-content: start;
-    
 }
 
 .logo span{
     font-weight: 300;
-    
 }
 
 .btn{
@@ -410,26 +425,4 @@ header{
         opacity: 0;
         transform: translateY(15px);
     }
-}
-.row{
-  margin-top: 50px;
-  padding: 0px 30px;
-}
-.card{
-  color: #402218;
-  border: 2px solid #CEE6F3;
-  border-radius: 30px;
-}
-.card-text{
-  font-weight: 800;
-  font-size: 40px;
-}
-.row2{
-  margin-top: 50px;
-  padding: 0px 30px;
-}
-.row2 .card-text{
-  font-size: 150px;
-  text-align: center;
-  color: #402218;
-}
+  }

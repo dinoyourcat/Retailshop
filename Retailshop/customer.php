@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-  <link rel="stylesheet" href="style/province.css">
+  <link rel="stylesheet" href="style/employee.css">
   <title>Home</title>
 </head>
 
@@ -115,37 +115,56 @@
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">เพิ่มข้อมูล</h5>
+                <h5 class="modal-title" id="exampleModalLabel">เพิ่มข้อมูลลูกค้า</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
                 <form>
                   <div class="mb-3">
-                    <label for="" class="col-form-label">ลำดับ :</label>
+                    <label for="" class="col-form-label">รหัสลูกค้า :</label>
                     <input type="text" class="form-control" id="">
                   </div>
                   <div class="mb-3">
-                    <label for="" class="col-form-label">รหัสประเทศ :</label>
+                    <label for="" class="col-form-label">ชื่อ :</label>
                     <input type="text" class="form-control" id="">
                   </div>
                   <div class="mb-3">
-                    <label for="" class="col-form-label">รหัสจังหวัด :</label>
+                    <label for="" class="col-form-label">นามสกุล :</label>
                     <input type="text" class="form-control" id="">
                   </div>
                   <div class="mb-3">
-                    <label for="" class="col-form-label">กลุ่มจังหวัด :</label>
+                    <label for="" class="col-form-label">ที่อยู่ :</label>
                     <input type="text" class="form-control" id="">
                   </div>
                   <div class="mb-3">
-                    <label for="" class="col-form-label">ชื่อจังหวัด:</label>
+                    <label for="" class="col-form-label">ชื่อจังหวัด :</label>
+                    <select class="form-select" aria-label="Default select example">
+                      <option selected>โปรดเลือก</option>
+                      <option value="1">อนุญาติให้ใช้ระบบได้</option>
+                      <option value="2">ไม่อนุญาติให้เข้าใช้ระบบ</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label for="" class="col-form-label">เบอร์โทร :</label>
                     <input type="text" class="form-control" id="">
                   </div>
-
+                  <div class="mb-3">
+                    <label for="" class="col-form-label">วันที่ :</label>
+                    <input type="date" class="form-control" id="">
+                  </div>
+                  <div class="mb-3">
+                    <label for="" class="col-form-label">สถานะ :</label>
+                    <select class="form-select" aria-label="Default select example">
+                      <option selected>โปรดเลือก</option>
+                      <option value="1">0</option>
+                      <option value="2">1</option>
+                    </select>
+                  </div>
                 </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Add</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">กลับ</button>
+                <button type="button" class="btn btn-primary">เพิ่ม</button>
               </div>
             </div>
           </div>
@@ -153,19 +172,25 @@
 
       </div>
     </form>
-    <table class="table  table-bordered border-secondary table-hover">
-      <thead class="table-secondary  table-bordered border-secondary text-black">
+    <table class="table  table-bordered border-primary table-hover">
+      <thead class="table-info  table-bordered border-primary text-black">
         <tr>
-          <th scope="col">ลำดับ</th>
-          <th scope="col">รหัสประเทศ</th>
-          <th scope="col">รหัสจังหวัด</th>
-          <th scope="col">กลุ่มจังหวัด</th>
+          <th scope="col">รหัสลูกค้า</th>
+          <th scope="col">ชื่อ</th>
+          <th scope="col">นามสกุล</th>
+          <th scope="col">ที่อยู่</th>
           <th scope="col">ชื่อจังหวัด</th>
+          <th scope="col">เบอร์โทร</th>
+          <th scope="col">วันที่</th>
+          <th scope="col">สถานะ</th>
           <th scope="col">Action</th>
         </tr>
       </thead>
       <tbody>
         <tr>
+          <td>Null</td>
+          <td>Null</td>
+          <td>Null</td>
           <td>Null</td>
           <td>Null</td>
           <td>Null</td>
