@@ -120,7 +120,7 @@
         <button type="button" class="button btn btn-outline-warning">เริ่มการขาย</button>
       </div>
     </div>
-    <p class="detail">รายละเอียดสินค้า</p>
+    <h5 class="detail">รายละเอียดการซื้อ</h5>
     <div class="date row">
       <div class="col">
         <label class="mb-2" for="">รหัสสินค้า</label>
