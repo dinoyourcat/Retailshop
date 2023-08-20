@@ -97,27 +97,27 @@
   <!-- end navbar -->
 
   <div class="boxOne shadow-lg p-3 mb-5 ">
-    <p>ขายสินค้า</p>
-    <h5>ข้อมูลการขาย</h5>
+    <p>คืนสินค้า</p>
+    <h5>กรอกรหัสการขาย</h5>
     <div class="date row">
-      <div class="col">
-        <label class="mb-2" for="">วันที่</label>
-        <input type="text" class="form-control" placeholder="">
-      </div>
-      <div class=" col1 col">
+      <div class="col-auto">
         <label class="mb-2" for="">รหัสการขาย</label>
         <input type="text" class="form-control" placeholder="">
       </div>
-      <div class=" col">
+      <div class="col-auto">
+        <button type="button" class="button btn btn-outline-warning">ค้นหา</button>
+      </div>
+      <div class="col-auto">
+        <label class="mb-2" for="">วันที่</label>
+        <input type="text" class="form-control" placeholder="">
+      </div>
+      <div class=" col-auto">
         <label class="mb-2" for="">รหัสลูกค้า</label>
         <input type="text" class="form-control" placeholder="">
       </div>
-      <div class=" col">
+      <div class="col-auto">
         <label class="mb-2" for="">ชื่อ-นามสกุล</label>
         <input type="text" class="form-control " placeholder="">
-      </div>
-      <div class=" col">
-        <button type="button" class="button btn btn-outline-warning">เริ่มการขาย</button>
       </div>
     </div>
 
@@ -163,7 +163,7 @@
         <button type="button" class="btndanger btn btn-danger">ยกเลิก</button>
       </div>
       <div class="col-auto">
-        <button type="button" class="btnprint btn btn-dark"><i class="bi bi-filetype-pdf"></i> พิมพ์ใบเสร็จ</button>
+        <button type="button" class="btnprint btn btn-dark"><i class="bi bi-filetype-pdf"></i> พิมพ์ใบคืนสินค้า</button>
       </div>
     </div>
   </div>
