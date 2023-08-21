@@ -6,7 +6,7 @@
   box-sizing: border-box;
   font-family: 'K2D', sans-serif;
 }
-
+/*bg*/
 section{
 
   min-height: 100vh;
@@ -42,7 +42,18 @@ section .color:nth-child(3){
   border-radius: 194px;
   background: #8fbdd3a8;
 }
+/*end bg*/
 
+.proamount{
+    font-weight: 800;
+    font-size: 60px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+.name{
+    margin-left:20px ;
+    color: #efefef;
+  }
 ul{
     list-style: none;
 }
@@ -418,18 +429,27 @@ header{
 .card{
   color: #402218;
   border: 2px solid #CEE6F3;
-  border-radius: 30px;
+  border-radius: 10px;
 }
 .card-text{
   font-weight: 800;
   font-size: 40px;
 }
-.row2{
-  margin-top: 50px;
-  padding: 0px 30px;
+/* .row2{
+    margin-left: 30px;
 }
 .row2 .card-text{
   font-size: 150px;
   text-align: center;
   color: #402218;
+  
+}*/
+ .recentsale{
+    width: 800px; 
+} 
+.return{
+    width: 500px;
 }
+/* .show2{
+    font-size: 10px;
+} */
