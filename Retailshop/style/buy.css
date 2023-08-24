@@ -4,9 +4,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'K2D', sans-serif;
+  font-family: 'Prompt', sans-serif;
 }
-
+.btn-group {
+    margin-left: 60px;
+  }
+ 
 /* section{
 
   min-height: 100vh;
@@ -54,11 +57,11 @@
     margin-right: 60px;
     text-align: center;
 }
-.date{
+.search{
     margin-left: 50px;
 }
 .modal-body .col-form-label{
-    color: #060605;
+    color: #361500;
 }
 .form.add{
     max-width: 1000px;
@@ -72,45 +75,47 @@
   margin-right: 30px;
   max-width: 100%;
   max-height: 100%;
-  background: #402218;
-  border: 0px;
+  background: #f7f3f2; 
+  /* -webkit-backdrop-filter: blur(10px);
+  /* backdrop-filter: blur(10px);  */
   border-radius: 30px;
-  color: rgb(127, 128, 130);
+  border:1px solid rgba(255, 255, 255, 0.18);
+  color: #361500;
 }
 .boxOne p{
   margin-left: 20px;
   margin-top: 10px;
   font-size: 30px;
-  font-weight: 800;
-  color: #FFAC41;
+  font-weight: 500;
+  color: #361500;
 }
 h5{
     margin-left: 30px;
     margin-bottom: 20px;
-    color: #FFEBC9;
+    color: #603601;
 }
 .boxOne .detail{
   margin-left: 30px;
 
-  color: #FFEBC9;
+  color: #603601;
   margin-top: 30px;
 }
-.date .form-control{
+.search .form-control{
   
-  color: #402218;
+  color: #361500;
   width: 100%;
   border-radius: 10px;
   
 }
-.date .button{
+.search .button{
   margin-top: 30px;
 }
 label{
   margin-left: 5px;
-  color: #FFEBC9;
+  color: #5C3D2E;
 }
 .modal-title{
-    color: #060605;
+    color: #361500;
     margin-left: 0px;
 }
 .boxTwo{
@@ -119,7 +124,7 @@ label{
   margin-right: 30px;
   max-width: 100%;
   max-height: 100%;
-  background: #402218;
+  background: #f7f3f2;
   border: 0px;
   border-radius: 30px;
   color: rgb(127, 128, 130);
@@ -128,7 +133,7 @@ label{
     margin-left: 30px;
     font-size: 30px;
     font-weight: 800;
-    color: #FFAC41;
+    color: #361500;
   }
   /* .boxTwo .detail{
     font-size: 18px;
@@ -148,6 +153,8 @@ label{
     margin-left: 50px;
     margin-bottom: 20px;
   }
+
+
 /* navbar*/
 .container{
   max-width: 65rem;
@@ -211,7 +218,7 @@ header{
     display: inline-block;
     padding: .5rem 1.3rem;
     font-size: 16px;
-    border: 2px solid #FFEBC9;
+    border: 2px solid #361500;
     border-radius: 2rem;
     line-height: 1;
     margin: 0 .2rem;
