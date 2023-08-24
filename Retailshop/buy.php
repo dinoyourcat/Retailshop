@@ -9,6 +9,9 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
   </script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -95,109 +98,139 @@
     </div>
   </header>
   <!-- end navbar -->
-
-  <div class="boxOne shadow-lg p-3 mb-5 ">
+  <div class="boxOne shadow p-3 mb-5 ">
     <p>ซื้อสินค้าเข้าร้าน</p>
     <h5>ข้อมูลการซื้อสินค้า</h5>
     <div class="date row">
       <div class="col">
+
         <label class="mb-2" for="">วันที่</label>
-        <input type="text" class="form-control" placeholder="">
+        <input type="text" class="form-control" placeholder="" disabled>
+
       </div>
-      <div class=" col1 col">
+      <div class="col">
+
         <label class="mb-2" for="">รหัสการซื้อ</label>
-        <input type="text" class="form-control" placeholder="">
+        <input type="text" class="form-control" placeholder="" disabled>
+
       </div>
       <div class=" col">
+
         <label class="mb-2" for="">รหัสพนักงาน</label>
-        <input type="text" class="form-control" placeholder="">
+        <input type="text" class="form-control" placeholder="" disabled>
+
       </div>
       <div class=" col">
+
         <label class="mb-2" for="">ชื่อ-นามสกุล</label>
-        <input type="text" class="form-control " placeholder="">
-      </div>
-      <div class=" col">
-        <button type="button" class="button btn btn-outline-warning">เริ่มการขาย</button>
+        <input type="text" class="form-control " placeholder="" disabled>
+
       </div>
     </div>
+
     <h5 class="detail">รายละเอียดการซื้อ</h5>
-    <div class="date row">
-      <div class="col">
-        <label class="mb-2" for="">รหัสสินค้า</label>
-        <input type="text" class="form-control" placeholder="">
-      </div>
-      <div class=" col1 col">
-        <label class="mb-2" for="">ชื่อสินค้า</label>
-        <input type="text" class="form-control" placeholder="">
-      </div>
-      <div class=" col">
-        <label class="mb-2" for="">ราคาต่อหน่วย (บาท)</label>
-        <input type="text" class="form-control" placeholder="">
-      </div>
-      <div class=" col">
-        <label class="mb-2" for="">จำนวน</label>
-        <input type="text" class="form-control " placeholder="">
-      </div>
-      <div class=" col">
-        <label class="mb-2" for="">ราคารวม (บาท)</label>
-        <input type="text" class="form-control" placeholder="">
-      </div>
-      <div class=" col">
-        <button type="button" class="button btn btn-outline-warning">เพิ่มสินค้า</button>
+    <!-- radio button -->
+    <div class="btn-group mb-4" role="group" aria-label="">
+
+      <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+      <label class="btn btn-outline-warning" style="color: #361500;" for="btnradio1">ค้นหาจากรหัสหรือชื่อสินค้า</label>
+
+      <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+      <label class="btn btn-outline-warning" style="color: #361500;"
+        for="btnradio2">ค้นหาจากรหัสหรือชื่อตัวแทนจำหน่าย</label>
+    </div>
+
+    <!-- radio button -->
+
+    <div class="search row">
+      <div class="col mt-2">
+        <!-- ค้นหาจากสินค้า -->
+        <div class="col">
+          <label class="" for=""></label>
+          <input type="text" class="form-control " style="width: 400px;"
+            placeholder="กรุณากรอกรหัสหรือชื่อตัวแทนจำหน่าย">
+          <button type="button" class="button btn btn-outline-warning">ค้นหา</button>
+        </div>
+        <!-- ค้นหาจากตัวแทน -->
+        <div class="col">
+          <label class="" for=""></label>
+          <input type="text" class="form-control " style="width: 400px;" placeholder="กรุณากรอกรหัสหรือชื่อสินค้า">
+          <button type="button" class="button btn btn-outline-warning">ค้นหา</button>
+        </div>
       </div>
     </div>
     <!-- table -->
-    <table class="table  table-bordered border-secondary table-hover">
-      <thead class="table-secondary table-bordered border-secondary text-black">
+    <table class="table  table-bordered text-center">
+      <thead class="table table-bordered ">
         <tr>
-          <th scope="col">รหัสสินค้า</th>
-          <th scope="col">ชื่อสินค้า</th>
-          <th scope="col">จำนวน</th>
-          <th scope="col">ราคาต่อหน่วย</th>
-          <th scope="col">ราคารวม</th>
-          <th scope="col">Action</th>
+          <th scope="col" style="color: #F3DEBA; background-color: #361500; border: #F3DEBA;">รหัสสินค้า</th>
+          <th scope="col" style="color: #F3DEBA; background-color: #361500; border: #F3DEBA;">ชื่อสินค้า</th>
+          <th scope="col" style="color: #F3DEBA; background-color: #361500; border: #F3DEBA;">ตัวแทนจำหน่าย</th>
+          <th scope="col" style="color: #F3DEBA; background-color: #361500; border: #F3DEBA;">ราคาต่อหน่วย</th>
+          <th scope="col" style="color: #F3DEBA; background-color: #361500; border: #F3DEBA;">จำนวน</th>
+          <th scope="col" style="color: #F3DEBA; background-color: #361500; border: #F3DEBA;">ราคารวม</th>
+          <th scope="col" style="color: #F3DEBA; background-color: #361500; border: #F3DEBA;">Action</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody">
         <tr>
-          <th></th>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <th style="color: #361500;"></th>
+          <td style="color: #361500;"></td>
+          <td style="color: #361500;"></td>
+          <td style="color: #361500;"></td>
+          <td class="" style="color: #361500;">
+            <input type="text" class="form-control" style="width: 100px; align-content:center;" placeholder="">
+          </td>
+          <td style="color: #361500;"></td>
+          <td>
+            <button type="button" class="button btn btn-outline-primary">เพิ่มสินค้า</button>
+          </td>
+          </tbody>
+    </table>
+    <table class="table  table-bordered text-center">
+      <thead class="table table-bordered ">
+        <tr>
+          <th scope="col" style="color: #F3DEBA; background-color: #361500; border: #F3DEBA;">ตัวแทนจำหน่าย</th>
+          <th scope="col" style="color: #F3DEBA; background-color: #361500; border: #F3DEBA;">รหัสสินค้า</th>
+          <th scope="col" style="color: #F3DEBA; background-color: #361500; border: #F3DEBA;">ชื่อสินค้า</th>
+          <th scope="col" style="color: #F3DEBA; background-color: #361500; border: #F3DEBA;">จำนวน</th>
+          <th scope="col" style="color: #F3DEBA; background-color: #361500; border: #F3DEBA;">Action</th>
+        </tr>
+      </thead>
+      <tbody">
+        <tr>
+          <th style="color: #361500;"></th>
+          <td style="color: #361500;"></td>
+          <td style="color: #361500;"></td>
+          <td style="color: #361500;"></td>
           <td>
             <!-- Modal แก้ไข-->
             <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal2"
               data-bs-whatever="@fat"><i class="bi bi-pencil-square"></i></button>
-
             <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel"
               aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">แก้ไขข้อมูลพนักงาน</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">แก้ไขข้อมูลสั่งซื้อสินค้า</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body text-start">
                     <form>
                       <div class="mb-3">
+                        <label for="" class="col-form-label">ตัวแทนจำหน่าย :</label>
+                        <input type="text" class="form-control" id="" disabled>
+                      </div>
+                      <div class="mb-3">
                         <label for="" class="col-form-label">รหัสสินค้า :</label>
-                        <input type="text" class="form-control" id="">
+                        <input type="text" class="form-control" id="" disabled>
                       </div>
                       <div class="mb-3">
                         <label for="" class="col-form-label">ชื่อสินค้า :</label>
-                        <input type="text" class="form-control" id="">
+                        <input type="text" class="form-control" id="" disabled>
                       </div>
                       <div class="mb-3">
                         <label for="" class="col-form-label">จำนวน :</label>
-                        <input type="text" class="form-control" id="">
-                      </div>
-                      <div class="mb-3">
-                        <label for="" class="col-form-label">ราคาต่อหน่วย :</label>
-                        <input type="text" class="form-control" id="">
-                      </div>
-                      <div class="mb-3">
-                        <label for="" class="col-form-label">ราคารวม :</label>
                         <input type="text" class="form-control" id="">
                       </div>
 
@@ -215,7 +248,7 @@
             <!-- Modal ปุ่มลบ-->
             <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
               data-bs-target="#staticBackdrop">
-              <i class="bi bi-trash3"></i>
+              <i class="bi0 bi-trash3"></i>
             </button>
             <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
               aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -237,19 +270,13 @@
             </div>
           </td>
         </tr>
-      </tbody>
+        </tbody>
     </table>
+
   </div>
-
-
-
   <div class="boxTwo shadow p-3 mb-5 ">
     <p>สรุปราคา</p>
     <div class="dateTwo row">
-      <div class="col-auto">
-        <label class="mb-2" for="">ราคารวม (บาท)</label>
-        <input type="text" class="form-control" placeholder="">
-      </div>
       <div class="col-auto">
         <label class="mb-2" for="">ราคาสุทธิ (บาท)</label>
         <input type="text" class="form-control" placeholder="">
@@ -261,7 +288,14 @@
     </div>
   </div>
 
-
+  <script src="js/jquery.js"></script>
+  <script>
+  $(document).ready(function() {
+    $('#btnradio1').click(function() {
+      $()
+    })
+  })
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
