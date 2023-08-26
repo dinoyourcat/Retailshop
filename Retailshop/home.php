@@ -148,7 +148,7 @@ try {
     <div class="col-sm-4">
       <div class="card">
         <div class="card-body">
-          <img src="images/img4.png" alt="" class="rounded float-end " style="width:80px;">
+          <img src="images/package.png" alt="" class="rounded-4 float-end " style="width:80px;">
           <h5 class="card-title">สินค้าทั้งหมด</h5>
           <?php
                     $sql = "SELECT * FROM product";
@@ -166,7 +166,7 @@ try {
     <div class="col-sm-4">
       <div class="card">
         <div class="card-body">
-          <img src="images/img2.png" alt="" class="rounded float-end " style="width:80px;">
+          <img src="images/order.png" alt="" class="rounded-4 float-end " style="width:80px;">
           <h5 class="card-title">ยอดสั่งซื้อ</h5>
           <?php
                   $sql = "SELECT COUNT(*) as buy FROM buy";
@@ -184,7 +184,7 @@ try {
     <div class="col-sm-4">
       <div class="card">
         <div class="card-body">
-          <img src="images/img3.png" alt="" class="rounded float-end " style="width:50px;">
+          <img src="images/cart.png" alt="" class="rounded-4 float-end " style="width:80px;">
           <h5 class="card-title">ยอดขาย</h5>
 
           <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="">
@@ -251,7 +251,7 @@ try {
     <div class="col-sm-4">
       <div class="card mt-4">
         <div class="card-body">
-          <img src="images/img1.png" alt="" class="rounded float-end " style="width:80px;">
+          <img src="images/bath.png" alt="" class="rounded-4 float-end " style="width:80px;">
           <h5 class="card-title">รายได้เข้าร้านทั้งหมด</h5>
           <?php
                 $sql = "SELECT SUM(Net_price) - SUM(Net_discount) AS Total FROM sale";
