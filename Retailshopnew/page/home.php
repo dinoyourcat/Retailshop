@@ -1,21 +1,7 @@
 <?php
 session_start();
 include '../controller/connect.php';
-?>
-<?php
 
-$host = "localhost";
-$username = "root";
-$password = "";
-$dbname = "tatcshop";
-
-try {
-    $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    
-} catch (PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
-}
 ?>
 
 <!DOCTYPE html>
@@ -50,26 +36,27 @@ try {
         <h3 class="logo">Retial<span>Shop</span></h3>
 
         <?php
-        if (!isset($_SESSION['username'])) {
-            header("Location: login.php");
-            exit();
-        }
-        
-        $username = $_SESSION['username'];
-        
-        // ดึงข้อมูลพนักงานจากฐานข้อมูล
-        $sql = "SELECT Emp_name FROM employee WHERE User_name = :username";
-        $query = $conn->prepare($sql);
-        $query->execute(array(':username' => $username)); // ใช้ array ใน execute แทน bindParam
-        $result = $query->fetch(PDO::FETCH_ASSOC);
-        
-        if ($result) {
-            $empName = $result['Emp_name'];
-        } else {
-            // หากไม่พบข้อมูลพนักงาน
-            $empName = "Unknown";
-        }
-        ?>
+            if (!isset($_SESSION['username'])) {
+                header("Location: login.php");
+                exit();
+            }
+
+            $username = $_SESSION['username'];
+
+            // ดึงข้อมูลพนักงานจากฐานข้อมูล
+            $sql = "SELECT * FROM employee WHERE User_name = '$username'";
+            $query = mysqli_query($conn, $sql); // ใช้ mysqli_query แทน execute
+            $result = mysqli_fetch_assoc($query); // ใช้ mysqli_fetch_assoc แทน fetch_assoc
+
+            if ($result) {
+                $empId = $result['Emp_id'];
+                $empName = $result['Emp_name'];
+            } else {
+                // หากไม่พบข้อมูลพนักงาน
+                $empId = "Unknown";
+                $empName = "Unknown";
+            }
+            ?>
 
         <h6 class="name"><?php echo $empName; ?></h6>
       </div>
@@ -77,6 +64,9 @@ try {
       <div class="nav-btn">
         <div class="nav-links">
           <ul>
+            <li class="nav-link" style="--i: .6s">
+              <a href="home.php">หน้าแรก</a>
+            </li>
 
             <li class="nav-link" style="--i: .85s">
               <a href="#">จัดการข้อมูลทั่วไป</a>
@@ -140,7 +130,6 @@ try {
   </header>
   <!-- end navbar -->
 
-
   <!-- สินค้าทั้งหมด -->
   <div class="row">
     <div class="col-sm-4">
@@ -151,9 +140,8 @@ try {
 
           <?php
                   $sql = "SELECT COUNT(*) as productamount FROM product";
-                  $query = $conn->prepare($sql); 
-                  $query->execute();
-                  $fetch = $query->fetch();
+                  $query = mysqli_query($conn, $sql);
+                  $fetch = mysqli_fetch_assoc($query);
                 ?>
           <p class="card-text"><?= $fetch['productamount'] ?> รายการ</p>
         </div>
@@ -168,10 +156,9 @@ try {
           <img src="../images/order.png" alt="" class="rounded-4 float-end " style="width:80px;">
           <h5 class="card-title">ยอดสั่งซื้อ</h5>
           <?php
-                  $sql = "SELECT COUNT(*) as buy FROM buy";
-                  $query = $conn->prepare($sql); 
-                  $query->execute();
-                  $fetch = $query->fetch();
+                 $sql = "SELECT COUNT(*) as buy FROM buy";
+                 $query = mysqli_query($conn, $sql);
+                 $fetch = mysqli_fetch_assoc($query);
                 ?>
           <p class="card-text"><?= $fetch['buy'] ?> ออเดอร์</p>
         </div>
@@ -185,20 +172,52 @@ try {
         <div class="card-body">
           <img src="../images/cart.png" alt="" class="rounded-4 float-end " style="width:80px;">
           <h5 class="card-title">ยอดขาย</h5>
+          <?php 
+          //คำนวนยอดขายรายวัน
+          if (isset($_POST['dayCal'])) {
+            // วันที่ปัจจุบัน
+            $current_date = date("Y-m-d");
+        
+            // SQL Query สำหรับคำนวณยอดขายรายวันปัจจุบัน
+            $sql = "SELECT SUM(Net_price) AS total_sales 
+                    FROM sale 
+                    WHERE DATE(Sale_date) = '$current_date'";
+        
+            $result = $conn->query($sql);
+            $row = $result->fetch_assoc();
+            $total_sales = $row['total_sales'];
+        }
+        //คำนวนยอดขายรายวัน
 
-          <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="">
-            วัน
-          </button>
-          <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="">
-            สัปดาห์
-          </button>
-          <!-- Button for modal -->
-          <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#month">
-            เดือน
-          </button>
-          <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#year">
-            ปี
-          </button>
+        //คำนวนยอดขายรายอาทิต
+        if (isset($_POST['weekCal'])) {
+          // คำนวณยอดขายรายสัปดาห์ปัจจุบัน
+          $current_week_start = date('Y-m-d', strtotime('this week'));
+          $current_week_end = date('Y-m-d', strtotime('this week +6 days'));
+      
+          $sql = "SELECT SUM(Net_price) AS total_sales FROM sale WHERE Sale_date BETWEEN '$current_week_start' AND '$current_week_end'";
+          $result = $conn->query($sql);
+          $row = $result->fetch_assoc();
+          $total_sales = $row['total_sales'];
+        }
+        //คำนวนยอดขายรายอาทิต
+          ?>
+          <form method="post">
+            <button type="submit" class="btn" data-bs-toggle="modal" data-bs-target="" name="dayCal">
+              วัน
+            </button>
+
+            <button type="submit" class="btn" data-bs-toggle="modal" data-bs-target="" name="weekCal">
+              สัปดาห์
+            </button>
+            <!-- Button for modal -->
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#month">
+              เดือน
+            </button>
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#year">
+              ปี
+            </button>
+          </form>
 
           <!-- Modal month -->
           <div class="modal fade" id="month" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -210,8 +229,25 @@ try {
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <button type="button" class="btn " data-bs-dismiss="">เดือน ...</button>
-                  <button type="button" class="btn">เดือน ...</button>
+                  <div class="mb-3">
+                    <label for="" class="col-form-label">Month :</label>
+                    <select class="form-select" aria-label="Default select example" name="empstatus"
+                      value="<?php echo $row['Emp_status']; ?>">
+                      <?php
+                            if ($row['Emp_status'] == 1) {
+                            ?>
+                      <option selected value="1">เข้าระบบได้</option>
+                      <option value="2">ไม่อนุญาตให้เข้าระบบ</option>
+                      <?php
+                            } else {
+                            ?>
+                      <option selected value="2">ไม่อนุญาตให้เข้าระบบ</option>
+                      <option value="1">เข้าระบบได้</option>
+                      <?php
+                            }
+                            ?>
+                    </select>
+                  </div>
                 </div>
               </div>
             </div>
@@ -227,20 +263,48 @@ try {
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <button type="button" class="btn" data-bs-dismiss="">ปี ...</button>
-                  <button type="button" class="btn">ปี ...</button>
+                  <div class="mb-3">
+                    <label for="" class="col-form-label">Year :</label>
+                    <select class="form-select" aria-label="Default select example" name="empstatus"
+                      value="<?php echo $row['Emp_status']; ?>">
+                      <?php
+                            if ($row['Emp_status'] == 1) {
+                            ?>
+                      <option selected value="1">เข้าระบบได้</option>
+                      <option value="2">ไม่อนุญาตให้เข้าระบบ</option>
+                      <?php
+                            } else {
+                            ?>
+                      <option selected value="2">ไม่อนุญาตให้เข้าระบบ</option>
+                      <option value="1">เข้าระบบได้</option>
+                      <?php
+                            }
+                            ?>
+                    </select>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+          <!-- ยอดขายรายวัน -->
+          <?php if (isset($total_sales)): ?>
+          <h6 class="mt-3"></h6>
+          <h6>วันที่ <?= $current_date ?></h6>
+          <p class="card-text"><?= number_format($total_sales, 2) ?> บาท</p>
+          <?php endif; ?>
+          <!-- ยอดขายรายวัน -->
 
+          <!-- ยอดขายรายอาทิตย์ -->
+          <?php if (isset($total_sales)): ?>
+          <p>ยอดขายรายสัปดาห์ปัจจุบัน: <?= number_format($total_sales, 2) ?> บาท</p>
+          <?php endif; ?>
+          <!-- ยอดขายรายอาทิตย์ -->
           <?php
                       $sql = "SELECT COUNT(*) as sale FROM sale";
-                      $query = $conn->prepare($sql); 
-                      $query->execute();
-                      $fetch = $query->fetch();
+                      $query = mysqli_query($conn, $sql);
+                      $fetch = mysqli_fetch_assoc($query);
                 ?>
-          <p class="card-text"><?= $fetch['sale'] ?> รายการ</p>
+
         </div>
       </div>
     </div>
@@ -254,9 +318,8 @@ try {
           <h5 class="card-title">รายได้เข้าร้านทั้งหมด</h5>
           <?php
                 $sql = "SELECT SUM(Net_price) - SUM(Net_discount) AS Total FROM sale";
-                $query = $conn->prepare($sql); 
-                $query->execute();
-                $fetch = $query->fetch();
+                $query = mysqli_query($conn, $sql);
+                $fetch = mysqli_fetch_assoc($query);
                 // echo number_format($fetch['Total'], 2); 
             ?>
           <p class="card-text"><?= number_format($fetch['Total'], 2) ?> บาท</p>
@@ -289,33 +352,30 @@ try {
                     </thead>
                     <tbody>
                       <?php
-                          $sql = "SELECT buy.*, employee.Emp_name FROM buy INNER JOIN employee ON buy.Emp_id = employee.Emp_id ORDER BY Receive_date DESC LIMIT 8";
-                          $query = $conn->prepare($sql);
-                          $query->execute();
-                          $result = $query->fetchAll(PDO::FETCH_ASSOC);
-                          foreach ($result as $row) {
-                          ?>
+                    $sql = "SELECT buy.*, employee.Emp_name FROM buy INNER JOIN employee ON buy.Emp_id = employee.Emp_id ORDER BY Receive_date DESC LIMIT 8";
+                    $result = $conn->query($sql);
+                    while ($row = $result->fetch_assoc()): ?>
                       <tr>
                         <td><?php echo $row['Emp_name'] ?></td>
-                        <td><?php echo $row['Receive_date']?></td>
+                        <td><?php echo $row['Receive_date'] ?></td>
                         <td><?php
-                                  $buystatus = $row['Buy_status'];
-
-                                  if ($buystatus == 1) {
-                                      $echoStatus = "ยกเลิกการสังซื้อ";
-                                  } elseif ($buystatus == 2) {
-                                      $echoStatus = "รับสินค้าแต่ไม่ครบ";
-                                  } else {
-                                      $echoStatus = "รับสินค้าครบ";
-                                  }
-
-                                  echo $echoStatus;
-                                  ?>
+                            if ($row['Buy_status'] !== false) {
+                              $buystatus = $row['Buy_status'];
+                              if ($buystatus == 1) {
+                                $echoStatus = "ยกเลิกการสั่งซื้อ";
+                              } elseif ($buystatus == 2) {
+                                $echoStatus = "รับสินค้าแต่ไม่ครบ";
+                              } else {
+                                $echoStatus = "รับสินค้าครบ";
+                              }
+                              echo $echoStatus;
+                            } else {
+                              echo "ไม่มีสถานะการสั่งซื้อ";
+                            }
+                            ?>
                         </td>
                       </tr>
-                      <?php
-                          }
-                          ?>
+                      <?php endwhile; ?>
                     </tbody>
                   </table>
                 </div>
@@ -347,11 +407,10 @@ try {
                   </thead>
                   <tbody>
                     <?php
-                           $sql = "SELECT * FROM re_turn inner join product on re_turn.pro_id=product.pro_id";
-                           $query = $conn->prepare($sql); 
-                           $query->execute();
+                           $sql = "SELECT * FROM re_turn INNER JOIN product ON re_turn.pro_id = product.pro_id";
+                           $query = mysqli_query($conn, $sql);
          
-                              while ($fetch = $query->fetch()){
+                           while ($fetch = mysqli_fetch_assoc($query)) {
                           ?>
                     <tr>
                       <td>
